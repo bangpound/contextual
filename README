@@ -2,7 +2,7 @@
 
 -- SUMMARY --
 
-Works for D6.
+Works for Drupal 6.
 
 Adds contextual links for several objects like nodes, views, blocks etc.
 It's also an API which other modules can hook into to add or alter
