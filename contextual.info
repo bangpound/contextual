@@ -1,0 +1,5 @@
+; $Id$
+name = "Contextual links"
+description = "Provides contextual actions on nodes, views etc"
+core = 6.x
+package = "Administration"
