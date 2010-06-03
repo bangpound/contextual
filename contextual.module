@@ -147,6 +147,14 @@ function contextual_add_css_and_js() {
 }
 
 /**
+ * Implementation of hook_footer().
+ */
+function contextual_footer($main) {
+  $links = contextual_set_closure();
+  return implode("\n", $links);
+}
+
+/**
  * Implementation of hook_preprocess_page().
  */
 function contextual_preprocess_page(&$vars) {
@@ -162,9 +170,6 @@ function contextual_preprocess_page(&$vars) {
     contextual_set_closure($page_links, 'contextual-page');
     $vars['page_classes'] = 'contextual-enabled contextual-page';
   }
-
-  $links = contextual_set_closure();
-  $vars['closure'] .= implode("\n", $links);
 }
 
 /**
