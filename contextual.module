@@ -128,7 +128,7 @@ function contextual_prepare_links($links) {
 function contextual_set_closure($links = NULL, $id = NULL) {
   static $all_links = array();
   if (isset($links) && isset($id) && !isset($all_links[$id])) {
-    $all_links[$id] = theme('contextual', $links, $id);
+    $all_links[$id] = theme('contextual_links', $links, $id);
   }
   else {
     return $all_links;
