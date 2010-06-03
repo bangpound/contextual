@@ -290,6 +290,7 @@ function contextual_contextual_block($block) {
       'weight' => 1,
       'title' => 'Configure block',
       'href' => 'admin/build/block/configure/'. $block->module .'/'. $block->delta,
+      'query' => array('destination' => $_GET['q']),
     );
   }
 
@@ -341,6 +342,7 @@ function contextual_contextual_node($node) {
     'weight' => $weight++,
     'title' => 'Edit',
     'href' => 'node/' . $node->nid . '/edit',
+    'query' => array('destination' => $_GET['q']),
     'access callback' => 'node_access',
     'access arguments' => array('update', $node)
   );
@@ -397,6 +399,7 @@ function contextual_contextual_user($account) {
       'weight' => 0,
       'title' => 'Edit user',
       'href' => 'user/'. $account->uid .'/edit/',
+      'query' => array('destination' => $_GET['q']),
     );
     contextual_set_links('page-links', $links);
   }
@@ -413,7 +416,8 @@ function contextual_contextual_views($view) {
     'weight' => 0,
     'title' => 'Edit view',
     'href' => 'admin/build/views/edit/' . $view->name,
-    'fragment' => 'views-tab-' . $view->current_display
+    'fragment' => 'views-tab-' . $view->current_display,
+    'query' => array('destination' => $_GET['q']),
   );
   $links['views-export'] = array(
     'weight' => 1,
