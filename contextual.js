@@ -27,7 +27,7 @@ Drupal.behaviors.contextual = function(context) {
     $('.contextual', this).css('display', 'none');
     $('.contextual-border', this).remove();
   });
-}
+};
 
 /**
  * toggles visibility on an element
@@ -40,4 +40,4 @@ Drupal.contextual.toggleVis = function(element) {
     element.hide();
   }
   $('a.contextual-toggler', element.parent()).toggleClass('contextual-toggler-active');
-}
+};
