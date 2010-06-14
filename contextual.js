@@ -10,29 +10,29 @@ Drupal.behaviors.contextual = function(context) {
     var classes = ($(this).attr("class"));
     var identifier = '#contextual-'+ classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
     $(this).hover(function() {
-    $(this).prepend($(identifier));
-    if ($(this).css('position') === 'static') {
-      positioned = false;
-      $(this).css({'position': 'relative'});
-    }
+      $(this).prepend($(identifier));
+      if ($(this).css('position') === 'static') {
+        positioned = false;
+        $(this).css({'position': 'relative'});
+      }
 
-    // hide parent actions
-    $('.contextual').css('padding-left', 100);
-    $('.contextual-links').hide();
-    $('.contextual').hide();
-    $('.contextual-border').remove();
-    $('a.contextual-toggler').removeClass('contextual-toggler-active');
+      // hide parent actions
+      $('.contextual').css('padding-left', 100);
+      $('.contextual-links').hide();
+      $('.contextual').hide();
+      $('.contextual-border').remove();
+      $('a.contextual-toggler').removeClass('contextual-toggler-active');
 
-    // Show current actions
-    $('.contextual:first', this).show().append(Drupal.contextual.overlay);
-  },
-  function() {
-    if (!positioned) {
-      $(this).css('position', 'static');
-    }
-    $('.contextual', this).hide();
-    $('.contextual-border', this).remove();
-  });
+      // Show current actions
+      $('.contextual:first', this).show().append(Drupal.contextual.overlay);
+    },
+    function() {
+      if (!positioned) {
+        $(this).css('position', 'static');
+      }
+      $('.contextual', this).hide();
+      $('.contextual-border', this).remove();
+    });
   })
   .addClass('contextual-processed');
 };
