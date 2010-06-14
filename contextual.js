@@ -21,8 +21,9 @@ Drupal.behaviors.contextual = function (context) {
         })
         .prependTo($('.contextual-wrapper', $links));
 
+    $(this).prepend($links);
+
     $(this).hover(function () {
-      $(this).prepend($links);
       if ($(this).css('position') === 'static') {
         positioned = false;
         $(this).css({'position': 'relative'});
