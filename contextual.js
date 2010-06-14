@@ -9,8 +9,8 @@ Drupal.behaviors.contextual = function (context) {
   $("div.contextual-enabled:not(.contextual-processed)", context).each(function () {
     var positioned = true,
       // Get the right actions from the closure region
-      classes = ($(this).attr("class")),
-      identifier = '#contextual-' + classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2'),
+      identifier = '#contextual-' + $(this).attr("class")
+        .replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2'),
       $links = $(identifier);
 
     $(this).hover(function () {
