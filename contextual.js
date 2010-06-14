@@ -16,15 +16,15 @@ Drupal.behaviors.contextual = function(context) {
     // hide parent actions
     $('.contextual').css('padding-left', 100);
     $('.contextual-links').hide();
-    $('.contextual').css('display', 'none');
+    $('.contextual').hide();
     $('.contextual-border').remove();
     $('a.contextual-toggler').removeClass('contextual-toggler-active');
 
     // Show current actions
-    $('.contextual:first', this).css('display', 'block').append(Drupal.contextual.overlay);
+    $('.contextual:first', this).show().append(Drupal.contextual.overlay);
   },
   function() {
-    $('.contextual', this).css('display', 'none');
+    $('.contextual', this).hide();
     $('.contextual-border', this).remove();
   });
 };
