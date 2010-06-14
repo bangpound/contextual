@@ -149,7 +149,7 @@ function contextual_add_css_and_js() {
 /**
  * Implementation of hook_footer().
  */
-function contextual_footer($main) {
+function contextual_footer($main = 0) {
   $links = contextual_set_closure();
   return implode("\n", $links);
 }
