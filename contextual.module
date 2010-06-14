@@ -45,6 +45,7 @@ function theme_contextual_links($contextual_links, $id) {
   return $output;
 }
 
+
 /**
  * API function to get all links for a certain object.
  *
