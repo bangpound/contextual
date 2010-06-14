@@ -9,7 +9,9 @@ Drupal.behaviors.contextual = function(context) {
     var classes = ($(this).attr("class"));
     var identifier = '#contextual-'+ classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
     $(this).prepend($(identifier));
-    $(this).css({'position': 'relative'});
+    if ($(this).css('position') === 'static') {
+      $(this).css({'position': 'relative'});
+    }
 
     // hide parent actions
     $('.contextual').css('padding-left', 100);
