@@ -5,10 +5,11 @@ Drupal.contextual.overlay = '<div class="contextual-border contextual-border-top
 
 Drupal.behaviors.contextual = function(context) {
   $("div.contextual-enabled:not(.contextual-processed)", context).each(function () {
-    var positioned = true;
-    // Get the right actions from the closure region
-    var classes = ($(this).attr("class"));
-    var identifier = '#contextual-'+ classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
+    var positioned = true,
+      // Get the right actions from the closure region
+      classes = ($(this).attr("class")),
+      identifier = '#contextual-'+ classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
+
     $(this).hover(function() {
       $(this).prepend($(identifier));
       if ($(this).css('position') === 'static') {
