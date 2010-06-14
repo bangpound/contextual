@@ -1,16 +1,19 @@
 /* $Id$ */
 
+/*global $,Drupal */
+"use strict";
+
 Drupal.contextual = Drupal.contextual || {};
 Drupal.contextual.overlay = '<div class="contextual-border contextual-border-top"></div><div class="contextual-border contextual-border-right"></div><div class="contextual-border contextual-border-bottom"></div><div class="contextual-border contextual-border-left"></div>';
 
-Drupal.behaviors.contextual = function(context) {
+Drupal.behaviors.contextual = function (context) {
   $("div.contextual-enabled:not(.contextual-processed)", context).each(function () {
     var positioned = true,
       // Get the right actions from the closure region
       classes = ($(this).attr("class")),
-      identifier = '#contextual-'+ classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
+      identifier = '#contextual-' + classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
 
-    $(this).hover(function() {
+    $(this).hover(function () {
       $(this).prepend($(identifier));
       if ($(this).css('position') === 'static') {
         positioned = false;
@@ -27,7 +30,7 @@ Drupal.behaviors.contextual = function(context) {
       // Show current actions
       $('.contextual:first', this).show().append(Drupal.contextual.overlay);
     },
-    function() {
+    function () {
       if (!positioned) {
         $(this).css('position', 'static');
       }
@@ -41,7 +44,7 @@ Drupal.behaviors.contextual = function(context) {
 /**
  * toggles visibility on an element
  */
-Drupal.contextual.toggleVis = function(element) {
+Drupal.contextual.toggleVis = function (element) {
   element = $('#' + element);
   if (element.is(":hidden")) {
     element.slideDown('fast');
@@ -50,3 +53,5 @@ Drupal.contextual.toggleVis = function(element) {
   }
   $('a.contextual-toggler', element.parent()).toggleClass('contextual-toggler-active');
 };
+
+/*jslint white: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, newcap: true, immed: true, strict: true, indent: 2 */
