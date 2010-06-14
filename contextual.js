@@ -28,13 +28,13 @@ Drupal.behaviors.contextual = function (context) {
       $('a.contextual-toggler').removeClass('contextual-toggler-active');
 
       // Show current actions
-      $('.contextual:first', this).show().append(Drupal.theme('contextualOverlay'));
+      $links.show().append(Drupal.theme('contextualOverlay'));
     },
     function () {
       if (!positioned) {
         $(this).css('position', 'static');
       }
-      $('.contextual', this).hide();
+      $links.hide();
       $('.contextual-border', this).remove();
     });
   })
