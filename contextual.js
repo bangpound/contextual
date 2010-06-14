@@ -9,17 +9,18 @@ Drupal.behaviors.contextual = function (context) {
       // Get the right actions from the closure region
       identifier = '#contextual-' + $(this).attr("class")
         .replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2'),
-      $links = $(identifier),
-      $toggler = $('<a class="contextual-toggler">').click(function () {
-          var $menu = $('.contextual-links', $links);
-          if ($menu.is(":hidden")) {
-            $menu.slideDown('fast');
-          } else {
-            $menu.hide();
-          }
-          $(this).toggleClass('contextual-toggler-active');
-        })
-        .prependTo($('.contextual-wrapper', $links));
+      $links = $(identifier);
+
+    $('<a class="contextual-toggler">').click(function () {
+        var $menu = $('.contextual-links', $links);
+        if ($menu.is(":hidden")) {
+          $menu.slideDown('fast');
+        } else {
+          $menu.hide();
+        }
+        $(this).toggleClass('contextual-toggler-active');
+      })
+      .prependTo($('.contextual-wrapper', $links));
 
     $(this).prepend($links);
 
