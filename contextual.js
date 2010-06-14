@@ -41,7 +41,7 @@ Drupal.behaviors.contextual = function(context) {
  * toggles visibility on an element
  */
 Drupal.contextual.toggleVis = function(element) {
-  var element = $('#' + element);
+  element = $('#' + element);
   if (element.is(":hidden")) {
     element.slideDown('fast');
   } else {
