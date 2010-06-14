@@ -4,17 +4,17 @@
 "use strict";
 
 Drupal.contextual = Drupal.contextual || {};
-Drupal.contextual.overlay = '<div class="contextual-border contextual-border-top"></div><div class="contextual-border contextual-border-right"></div><div class="contextual-border contextual-border-bottom"></div><div class="contextual-border contextual-border-left"></div>';
 
 Drupal.behaviors.contextual = function (context) {
   $("div.contextual-enabled:not(.contextual-processed)", context).each(function () {
     var positioned = true,
       // Get the right actions from the closure region
       classes = ($(this).attr("class")),
-      identifier = '#contextual-' + classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2');
+      identifier = '#contextual-' + classes.replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2'),
+      $links = $(identifier);
 
     $(this).hover(function () {
-      $(this).prepend($(identifier));
+      $(this).prepend($links);
       if ($(this).css('position') === 'static') {
         positioned = false;
         $(this).css({'position': 'relative'});
@@ -28,7 +28,7 @@ Drupal.behaviors.contextual = function (context) {
       $('a.contextual-toggler').removeClass('contextual-toggler-active');
 
       // Show current actions
-      $('.contextual:first', this).show().append(Drupal.contextual.overlay);
+      $('.contextual:first', this).show().append(Drupal.theme('contextualOverlay'));
     },
     function () {
       if (!positioned) {
@@ -52,6 +52,13 @@ Drupal.contextual.toggleVis = function (element) {
     element.hide();
   }
   $('a.contextual-toggler', element.parent()).toggleClass('contextual-toggler-active');
+};
+
+/**
+ * Theme function for contextual overlay.
+ */
+Drupal.theme.prototype.contextualOverlay = function () {
+  return '<div class="contextual-border contextual-border-top"></div><div class="contextual-border contextual-border-right"></div><div class="contextual-border contextual-border-bottom"></div><div class="contextual-border contextual-border-left"></div>';
 };
 
 /*jslint white: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, newcap: true, immed: true, strict: true, indent: 2 */
