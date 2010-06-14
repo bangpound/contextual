@@ -3,15 +3,23 @@
 /*global $,Drupal */
 "use strict";
 
-Drupal.contextual = Drupal.contextual || {};
-
 Drupal.behaviors.contextual = function (context) {
   $("div.contextual-enabled:not(.contextual-processed)", context).each(function () {
     var positioned = true,
       // Get the right actions from the closure region
       identifier = '#contextual-' + $(this).attr("class")
         .replace(/([^ ]+[ ]+)*contextual-([^ ]+)([ ]+[^ ]+)*/, '$2'),
-      $links = $(identifier);
+      $links = $(identifier),
+      $toggler = $('<a class="contextual-toggler">').click(function () {
+          var $menu = $('.contextual-links', $links);
+          if ($menu.is(":hidden")) {
+            $menu.slideDown('fast');
+          } else {
+            $menu.hide();
+          }
+          $(this).toggleClass('contextual-toggler-active');
+        })
+        .prependTo($('.contextual-wrapper', $links));
 
     $(this).hover(function () {
       $(this).prepend($links);
@@ -39,19 +47,6 @@ Drupal.behaviors.contextual = function (context) {
     });
   })
   .addClass('contextual-processed');
-};
-
-/**
- * toggles visibility on an element
- */
-Drupal.contextual.toggleVis = function (element) {
-  element = $('#' + element);
-  if (element.is(":hidden")) {
-    element.slideDown('fast');
-  } else {
-    element.hide();
-  }
-  $('a.contextual-toggler', element.parent()).toggleClass('contextual-toggler-active');
 };
 
 /**

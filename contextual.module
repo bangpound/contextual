@@ -35,9 +35,7 @@ function theme_contextual_links($contextual_links, $id) {
   $output = '<div class="contextual" id="'. $id .'">';
   $output .= '<div class="contextual-wrapper">';
 
-  $rand = rand();
-  $output .= l(t('Edit'), '', array('fragment' => 'contextual-links', 'html' => TRUE, 'attributes' => array('class' => 'contextual-toggler', 'onclick' => 'javascript:Drupal.contextual.toggleVis(\'contextual-links-'. $rand .'\'); return false;')));
-  $output .= theme('links', $contextual_links, array('id' => 'contextual-links-'. $rand, 'class' => 'contextual-links inline', 'style' => 'display: none;'));
+  $output .= theme('links', $contextual_links, array('class' => 'contextual-links inline', 'style' => 'display: none;'));
 
   $output .= '</div>';
   $output .= '</div>';
