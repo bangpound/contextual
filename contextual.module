@@ -385,6 +385,48 @@ function contextual_contextual_node($node) {
     );
   }
 
+  if (module_exists('clone')) {
+    $links['node-clone'] = array(
+      'weight' => ++$weight,
+      'title' => 'Clone node',
+      'href' => 'node/'.$node->nid.'/clone',
+      'access callback' => 'clone_access',
+      'access arguments' => array($node),
+    );
+  }
+
+  // Nodequeue support.
+  if (module_exists('nodequeue')) {
+    $queues = nodequeue_load_queues_by_type($node->type);
+    if ($queues) {
+      $subqueues = nodequeue_get_subqueues_by_node($queues, $node);
+      nodequeue_set_subqueue_positions($subqueues, $node->nid);
+      $subqueue_count = 0;
+      foreach ($subqueues as $subqueue) {
+        $queue = $queues[$subqueue->qid];
+        ++$weight;
+        if (empty($subqueue->position)) {
+          $links['node-addtoqueue-' . $subqueue->sqid] = array(
+            'weight' => $weight,
+            'title' => 'Add to queue '. $subqueue->title,
+            'href' => 'admin/content/nodequeue/'. $queue->qid .'/add/'. $subqueue->sqid .'/'. $node->nid,
+            'query' => drupal_get_destination() .'&'. nodequeue_get_token($node->nid),
+            'access callback' => 'nodequeue_queue_access',
+            'access arguments' => array($queue, $subqueue),
+          );
+        } else {
+          $links['node-removefromqueue-' . $subqueue->sqid] = array(
+            'weight' => $weight,
+            'title' => 'Remove from queue ' . $subqueue->title,
+            'href' => 'admin/content/nodequeue/'. $queue->qid .'/remove-node/'. $subqueue->sqid .'/'. $node->nid,
+            'query' => drupal_get_destination() .'&'. nodequeue_get_token($node->nid),
+            'access callback' => 'nodequeue_queue_access',
+            'access arguments' => array($queue, $subqueue),
+          );
+        }
+      }
+    }
+  }
   return $links;
 }
 
