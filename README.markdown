@@ -55,5 +55,5 @@ Instead, implement hook_preprocess().
 
 # Maintainers
 
-swentel - http://drupal.org/user/107403
-jyve - http://drupal.org/user/591438
+- swentel - http://drupal.org/user/107403
+- jyve - http://drupal.org/user/591438
