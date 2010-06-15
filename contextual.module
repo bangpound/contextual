@@ -208,7 +208,7 @@ function contextual_preprocess_node(&$vars) {
 }
 
 /**
- * Implementation of hook_preprocess_user().
+ * Implementation of hook_preprocess_user_profile().
  */
 function contextual_preprocess_user_profile(&$vars) {
   $links = contextual_get_all_links($vars['user'], 'user');
