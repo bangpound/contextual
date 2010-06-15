@@ -4,7 +4,7 @@
 "use strict";
 
 Drupal.behaviors.contextual = function (context) {
-  $("div.contextual-enabled:not(.contextual-processed)", context).each(function () {
+  $(".contextual-enabled:not(.contextual-processed)", context).each(function () {
     var positioned = true,
       // Get the right actions from the closure region
       identifier = '#contextual-' + $(this).attr("class")

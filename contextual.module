@@ -171,6 +171,8 @@ function contextual_preprocess_page(&$vars) {
   if (!empty($page_links)) {
     contextual_set_closure($page_links, 'contextual-page');
     $vars['page_classes'] = 'contextual-enabled contextual-page';
+    $all_links = contextual_set_closure();
+    $vars['closure'] .= $all_links['contextual-page'];
   }
 }
 
