@@ -18,19 +18,16 @@ function contextual_perm() {
  */
 function contextual_theme() {
   return array(
-    'contextual_links' => array(
-      'arguments' => array(
-        'edit_links' => NULL,
-        'id' => NULL
-      )
+    'contextual' => array(
+      'arguments' => array('edit_links' => NULL, 'id' => NULL)
     )
   );
 }
 
 /**
- * Theme contextual links.
+ * Theme the contextual links.
  */
-function theme_contextual_links($contextual_links, $id) {
+function theme_contextual($contextual_links, $id) {
 
   $output = '<div class="contextual" id="'. $id .'">';
   $output .= '<div class="contextual-wrapper">';
@@ -127,7 +124,7 @@ function contextual_prepare_links($links) {
 function contextual_set_closure($links = NULL, $id = NULL) {
   static $all_links = array();
   if (isset($links) && isset($id) && !isset($all_links[$id])) {
-    $all_links[$id] = theme('contextual_links', $links, $id);
+    $all_links[$id] = theme('contextual', $links, $id);
   }
   else {
     return $all_links;
