@@ -242,11 +242,10 @@ function contextual_preprocess_views_view(&$vars) {
     }
   }
 
-  $vars['views_classes'] = '';
-
   if (!empty($links)) {
-    contextual_set_closure($links, 'contextual-view-'. $vars['view']->vid);
-    $vars['views_classes'] = 'contextual-enabled';
+    contextual_set_closure($links, 'contextual-view-'. $vars['id']);
+    $vars['views_classes'] = 'contextual-enabled contextual-view-'. $vars['id'];
+    unset($vars['admin_links']);
   }
 }
 
