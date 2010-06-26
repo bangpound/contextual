@@ -32,8 +32,8 @@ Drupal.behaviors.contextual = function (context) {
 
       // hide parent actions
       $('.contextual').css('padding-left', 100);
-      $('.contextual-links').hide();
-      $('.contextual').hide();
+      $('.contextual-links:visible').hide();
+      $('.contextual:visible').hide();
       $('.contextual-border').remove();
       $('a.contextual-toggler').removeClass('contextual-toggler-active');
 
