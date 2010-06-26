@@ -225,9 +225,6 @@ function contextual_preprocess_user_profile(&$vars) {
  * Implementation of hook_preprocess_view().
  */
 function contextual_preprocess_views_view(&$vars) {
-
-  $links = array();
-
   $links = contextual_get_all_links($vars['view'], 'views');
 
   // Taxonomy term support.
