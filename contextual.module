@@ -384,7 +384,7 @@ function contextual_contextual_node($node) {
       'weight' => ++$weight,
       'title' => 'Clone node',
       'href' => 'node/'.$node->nid.'/clone',
-      'access callback' => 'clone_access',
+      'access callback' => 'clone_access_cloning',
       'access arguments' => array($node),
     );
   }
